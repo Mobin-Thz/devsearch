@@ -3,6 +3,13 @@
 {% block content %}
 
 <h1> {{project.title}} </h1>
+<hr>
+{% for tags in project.tag.all  %}
+<span style = 'border:1px solid cornflowerblue'> {{tags}} </span>
+{% endfor %}
+<hr>
 <br>
 <p> {{project.description}} </p>
+
+
 {% endblock content %}
