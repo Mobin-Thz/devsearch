@@ -17,9 +17,9 @@ def loginUser(request):
         password = request.POST['password']
 
         try:
-           user = User.objects.get(username=username)
+            user = User.objects.get(username=username)
         except: 
-            messages.error(request, 'Username does not exist')
+            messages.info(request, 'Username does not exist')
 
         user = authenticate(request, username=username, password=password)
 
@@ -76,3 +76,14 @@ def userProfile(request,pk):
 
     context = {'profile': profile, 'topSkills': topSkills, 'otherSkills':otherSkills}
     return render (request, 'users/user-profile.html' , context)
+
+
+@login_required(login_url='login')
+def userAccount(request):
+    profile = request.user.profile 
+
+    skills = profile.skill_set.all()
+    projects = profile.project_set.all()
+
+    context = {'profile': profile, 'skills': skills,'projects': projects}
+    return render(request, 'users/account.html', context)

@@ -847,15 +847,11 @@ img {
 }
 
 .alert {
-  display: inline-flex;
-  gap: 3rem;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2.5rem;
-  border-radius: 3px;
-  border: 1px solid var(--color-white-light);
-  margin-bottom: 1rem;
-  margin-right: 1rem;
+  position: fixed;
+  left: 50%;
+  top: 120px;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
 }
 
 .alert,
