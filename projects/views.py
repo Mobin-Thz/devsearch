@@ -1,15 +1,20 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from .models import project
-from .forms import ProjectForm
 from django.contrib import messages
+from django.db.models import Q
+from .utils import searchProjects
+
+from .models import project, Tag
+from .forms import ProjectForm
+
 
 
 def projects (request):
 
-    projects = project.objects.all()
-    context= { 'projects': projects }
+    projects, search_query = searchProjects(request)
+
+    context= { 'projects': projects , 'search_query' : search_query }
 
     return render(request,'projects/projects.html', context)
 
