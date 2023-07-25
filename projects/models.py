@@ -18,6 +18,13 @@ class project(models.Model):
 
     def __str__(self):
         return self.title
+    
+    
+
+    class Meta:
+        ordering = ['created']
+
+
 
 class review(models.Model):
     VOTE_TYPE = (

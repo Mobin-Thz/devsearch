@@ -89,7 +89,7 @@
                 <a href="{% url 'project' project.id %}"><img src="{{project.featured_image.url}}" alt="Project Thumbnail" /></a>
               </td>
               <td class="settings__tableInfo">
-                <a href="{% url 'project' project.id %}">{{projects.title}}</a>
+                <a href="{% url 'project' project.id %}">{{project.title}}</a>
                 <p> {{project.description|slice:'150'}} </p>
               </td>
               <td class="settings__tableActions">
