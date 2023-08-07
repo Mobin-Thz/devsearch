@@ -1,4 +1,5 @@
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from .serializers import Projectserializer
 from projects.models import project
@@ -21,7 +22,10 @@ def getRoutes(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def getprojects(request):
+
+    print('USER:', request.user )
 
     projects = project.objects.all()
     serializer = Projectserializer(projects, many=True)
